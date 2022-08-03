@@ -1,0 +1,45 @@
+<html>
+<script>
+    function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        init();
+    }
+
+    function getCookie(cname){
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) 
+      {
+      var c = ca[i].trim();
+      if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+      }
+    return "";
+    }
+
+    function eraseCookie(name) {   
+    document.cookie = name+'=; Max-Age=-99999999;';
+    init();
+}
+
+    function init() {
+        document.getElementById("cookie-value").innerHTML="Cookie[origin] = " + getCookie("origin"); 
+    }
+</script>
+
+<body onload="init()">
+    <div id="root" style="background-color: #e8f1ff;">
+        <h1>Site 2</h1>
+        <button type="button" onclick="setCookie('origin','new',1)">Set Cookie</button>
+    </div>
+    <div>
+        <button type="button" onclick="eraseCookie('origin')">Erase Cookie</button>
+    </div>
+    <div>
+        <h3 id="cookie-value"></h3>
+    </div>
+</body>
+
+</html>
