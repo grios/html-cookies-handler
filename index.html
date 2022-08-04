@@ -1,5 +1,5 @@
 <html>
-<title>Site 1</title>
+<title>Site 2</title>
 <style>
     html, body {
     margin: 0;
@@ -13,6 +13,7 @@
         let expires = "expires=" + d.toUTCString();
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
         init();
+        window.location.reload();
     }
 
     function getCookie(cname) {
@@ -28,6 +29,7 @@
     function eraseCookie(name) {
         document.cookie = name + '=; Max-Age=-99999999;';
         init();
+        window.location.reload();
     }
 
     function init() {
@@ -35,9 +37,9 @@
     }
 </script>
 
-<body onload="init()" style="background-color: #e8f1ff;">
+<body onload="init()" style="background-color: #f7eeba;">
     <div id="root">
-        <h1>Site 1</h1>
+        <h1>Site 2</h1>
         <button type="button" onclick="setCookie('origin','new',1)">Set Cookie</button>
     </div>
     <div>
